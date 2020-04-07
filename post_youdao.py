@@ -5,7 +5,12 @@ url="http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule"
 
 
 def get_salt():
-    return '15846843266453'
+    # 随机产生0到10的整数
+    import random
+    s=str(random.randint(0,10))
+    salt=get_ts()+s
+    print("salt=",salt)
+    return salt
 
 
 def get_sign():
@@ -17,7 +22,7 @@ def get_ts():
     import time
     t = time.time()
     ts = str(int(round(t * 1000)))
-    print(ts)
+    print("ts=",ts)
     return ts
 
 
