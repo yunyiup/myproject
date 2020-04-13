@@ -13,7 +13,7 @@ class MyTestCase(unittest.TestCase):
         get_salt = mock.Mock(return_value='15846843266453')
         self.assertEqual('15846843266453', get_salt())
     def test_get_sign(self):
-
+        get_sian = mock.Mock(return_value='dc2335b4f1adfd8e66e907cfc07762b5')
         self.assertEqual('dc2335b4f1adfd8e66e907cfc07762b5', get_sign())
 
 if __name__ == '__main__':
