@@ -19,7 +19,7 @@ class Youdao():
         s=str(random.randint(0,10))
         # salt=get_ts()+s
         salt=self.ts+s
-        print("salt=",salt)
+        # print("salt=",salt)
         return salt
     def get_md5(self,value):
         import hashlib
@@ -34,15 +34,15 @@ class Youdao():
         i=self.salt
         e=self.content
         s="fanyideskweb" + e + i + "Nw(nmmbP%A-r6U3EUn]Aj"
-        print("s=",s)
-        print("sian=", self.get_md5(s))
+        # print("s=",s)
+        # print("sian=", self.get_md5(s))
         return self.get_md5(s)
     def get_ts(self):
         # 时间戳
         import time
         t = time.time()
         ts = str(int(round(t * 1000)))
-        print("ts=",ts)
+        # print("ts=",ts)
         return ts
 
     # 全局变量抽成新函数
@@ -79,13 +79,20 @@ class Youdao():
     def fanyi(self):
 
         response = requests.post(self.url, data=self.yield_form_data(), headers=self.get_headers())
-        return response.text
+        import json
+        content=json.loads(response.text)
+        # return response.text
+        # print(content)
+        # 从结果字典中取出需要的内容
+        return content['translateResult'][0][0]['tgt']
 
 if __name__ == '__main__':
   # print(form_data)
   # print(get_headers())
   # response = requests.post(url, data=form_data(), headers=get_headers())
   # print(response.text)
-  youdao=Youdao('完美')
-  print(youdao.fanyi())
+  while(True):
+      i=input("please input:")
+      youdao=Youdao(i)
+      print("result:",youdao.fanyi())
 
