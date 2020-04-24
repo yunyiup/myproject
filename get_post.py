@@ -53,6 +53,9 @@ class Youdao():
         return content['translateResult'][0][0]['tgt']
 if __name__ == '__main__':
   while(True):
-      i=input("please input:")
-      youdao=Youdao(i)
-      print("result:",youdao.fanyi())
+      try:
+          i=input("please input:")
+          youdao=Youdao(i)
+          print("result:",youdao.fanyi())
+      except:
+          pass
