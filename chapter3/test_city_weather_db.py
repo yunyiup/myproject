@@ -19,10 +19,16 @@ class TestCityWeatherDbCase(unittest.TestCase):
         # codes=hefeng.get_city_code()
         # for each in codes:
         #     print(next(codes))
-        each = hefeng.get_weather("CN101010200")
-        print(each)
+        weathers=hefeng.get_all_weather(7)
+
+        # each = hefeng.get_weather("CN101010200")
+        # print(each)
         hefengdb = HefengDb()
-        hefengdb.save(each)
+        hefengdb.save_all(weathers)
+        print("show_all")
+        hefengdb.show_all()
+        self.assertEqual(7,hefengdb.count())
+        hefengdb.delete()
 
 
 if __name__ == '__main__':
